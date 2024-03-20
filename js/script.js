@@ -111,6 +111,7 @@ const addPost = async (event) => {
 function makeForm(postInfo = {}, form) {
     formContainer.innerHTML = ""
     form.innerHTML = ""
+
     const titleLabel = document.createElement('label');
     const titleInput = document.createElement('input');
     const userId = document.createElement('input');
@@ -225,7 +226,7 @@ const debounce = (func, delay) => {
 };
 
 const searchPosts = debounce(async (event) => {
-    const searchText = searchBox.value.toLowerCase();
+    const searchText = searchBox.value.trim().toLowerCase();
     let searchResult = postData.filter((post) => {
         let title = post.title.toLowerCase();
         return title.includes(searchText)
